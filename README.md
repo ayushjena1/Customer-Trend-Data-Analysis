@@ -203,11 +203,18 @@ GROUP BY customer_id;
 
 ### Analyze Discount Effectiveness
 ```sql
-SELECT 
-    discount_applied,
-    ROUND(AVG(purchase_amount), 2) as avg_purchase
-FROM customer
-GROUP BY discount_applied;
+WITH item_counts AS (
+    SELECT category, item_purchased, COUNT(customer_id) AS total_orders,
+        ROW_NUMBER() OVER (
+            PARTITION BY category
+            ORDER BY COUNT(customer_id) DESC
+        ) AS rank
+    FROM customer
+    GROUP BY category, item_purchased
+)
+SELECT rank, category, item_purchased, total_orders
+FROM item_counts
+WHERE rank <= 3;
 ```
 
 ---
