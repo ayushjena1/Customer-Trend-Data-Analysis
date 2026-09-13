@@ -42,8 +42,8 @@ This project provides a complete data analytics pipeline analyzing **customer sh
 - ✅ Top products by category
 
 ### 🛠️ Technical Capabilities
-- ✅ SQL queries with complex joins and aggregations
-- ✅ Data preprocessing and cleaning with Pandas
+- ✅ SQL for queries with complex aggregations
+- ✅ Pandas for Data preprocessing and cleaning
 - ✅ Statistical analysis and insights
 - ✅ Interactive Power BI dashboards
 - ✅ Data visualization with multiple chart types
@@ -75,53 +75,26 @@ Customer-Trend-Data-Analysis/
 
 ---
 
-## 📊 Dataset Overview
-
-### Features Analyzed
-| Column | Type | Description |
-|--------|------|-------------|
-| Customer ID | Integer | Unique customer identifier |
-| Age | Integer | Customer age (18-70 years) |
-| Gender | Categorical | Male/Female |
-| Item Purchased | Categorical | 25 different product types |
-| Category | Categorical | Clothing, Footwear, Accessories, Outerwear |
-| Purchase Amount | Numeric | USD amount ($20-$100) |
-| Location | Categorical | 50 US states |
-| Review Rating | Float | 2.5-5.0 star rating |
-| Subscription Status | Boolean | Yes/No |
-| Shipping Type | Categorical | 6 shipping options |
-| Discount Applied | Boolean | Yes/No |
-| Previous Purchases | Integer | 1-50 prior transactions |
-| Payment Method | Categorical | 6 payment types |
-| Frequency of Purchases | Categorical | 7 frequency levels |
-
----
-
 ## 🔑 Key Insights
 
-### 💰 Revenue Analysis
-- Total transactions analyzed: **3,900**
-- Average purchase amount: **$59.76 USD**
-- Revenue by subscription status reveals **subscriber loyalty patterns**
+### 👥 Gender-Based Revenue
+Male vs. Female customer spending patterns reveal segment-specific preferences
 
-### 👥 Customer Segmentation
-```
-New Customers (1 previous purchase)
-    ↓
-Returning Customers (2-10 purchases)
-    ↓
-Loyal Customers (10+ purchases)
-```
+### 💰 Subscription Value
+Subscribers show:
+- **Higher average spending** compared to non-subscribers
+- **Better retention** metrics
+- **Increased purchase frequency**
 
-### 📦 Top Performing Products
-- Highest-rated products identified across all categories
-- Discount application rates analyzed by item
-- Seasonal trends evaluated
+### 📦 Seasonal Trends
+- Product preferences vary by season (Winter, Spring, Summer, Fall)
+- Seasonal shipping type preferences
+- Weather-dependent category performance
 
-### 🚚 Shipping Analysis
-- 6 shipping types compared for impact on purchases
-- Express vs. Standard shipping preferences
-- Delivery method effectiveness metrics
+### 🚚 Geographic Insights
+- Revenue distribution across 50 US states
+- Regional purchasing power variations
+- Location-based shipping preferences
 
 ---
 
@@ -163,12 +136,6 @@ The project includes **10 comprehensive SQL queries** covering:
 7. Visualization & Insights
 ```
 
-### Key Findings
-- **3,863/3,900** valid review ratings (37 missing values handled)
-- **Age distribution** across 4 quartile-based groups
-- **Purchase frequency** mapped to daily intervals
-- Statistical summaries for all numeric features
-
 ---
 
 ## 📊 Power BI Dashboard
@@ -184,83 +151,7 @@ Interactive visualizations include:
 
 ---
 
-## 🚀 Getting Started
-
-### Prerequisites
-```bash
-Python 3.8+
-SQL Server / PostgreSQL
-Power BI Desktop (for dashboard)
-Jupyter Notebook
-```
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ayushjena1/Customer-Trend-Data-Analysis.git
-   cd Customer-Trend-Data-Analysis
-   ```
-
-2. **Install Python dependencies**
-   ```bash
-   pip install pandas numpy jupyter matplotlib seaborn
-   ```
-
-3. **Run Jupyter Notebook**
-   ```bash
-   jupyter notebook customer_shopping_analysis.ipynb
-   ```
-
-4. **Execute SQL Queries**
-   - Open `customer_analysis_query.sql` in your SQL client
-   - Load `customer_shopping_behavior.csv` into database
-   - Run individual queries for analysis
-
-5. **View Power BI Dashboard**
-   - Open `customer_behavior_dashboard.pbix` in Power BI Desktop
-   - Refresh data source connection
-   - Explore interactive visualizations
-
----
-
-## 📈 Analysis Highlights
-
-### Gender-Based Revenue
-Male vs. Female customer spending patterns reveal segment-specific preferences
-
-### Subscription Value
-Subscribers show:
-- **Higher average spending** compared to non-subscribers
-- **Better retention** metrics
-- **Increased purchase frequency**
-
-### Seasonal Trends
-- Product preferences vary by season (Winter, Spring, Summer, Fall)
-- Seasonal shipping type preferences
-- Weather-dependent category performance
-
-### Geographic Insights
-- Revenue distribution across 50 US states
-- Regional purchasing power variations
-- Location-based shipping preferences
-
----
-
-## 📂 Files Description
-
-| File | Purpose | Format |
-|------|---------|--------|
-| `customer_shopping_behavior.csv` | Source dataset | CSV (3,900 rows × 18 columns) |
-| `customer_analysis_query.sql` | SQL queries for analysis | SQL |
-| `customer_shopping_analysis.ipynb` | Data exploration & processing | Jupyter Notebook |
-| `customer_behavior_dashboard.pbix` | Interactive dashboards | Power BI |
-| `Analysis Presentation.pptx` | Executive summary | PowerPoint |
-| `Analysis PDF.pdf` | Detailed report | PDF |
-
----
-
-## 🔧 Technologies Used
+## 🔧 Tech Stacks
 
 <div align="center">
 
@@ -279,33 +170,6 @@ Subscribers show:
 
 ---
 
-## 💡 Methodology
-
-### Data Science Pipeline
-```
-Raw Data → Cleaning → EDA → Feature Engineering → Analysis → Visualization → Insights
-```
-
-### Quality Assurance
-- ✅ Data validation checks
-- ✅ Missing value treatment
-- ✅ Outlier detection
-- ✅ Statistical testing
-- ✅ Cross-validation of results
-
----
-
-## 📊 Expected Outcomes
-
-This analysis provides:
-1. **Strategic Insights** - Data-driven business recommendations
-2. **Customer Understanding** - Segmentation and behavior patterns
-3. **Revenue Optimization** - Identification of high-value segments
-4. **Operational Efficiency** - Shipping and discount strategy optimization
-5. **Marketing Intelligence** - Targeted campaign recommendations
-
----
-
 ## 🎓 Learning Outcomes
 
 By exploring this project, you'll learn:
@@ -319,7 +183,7 @@ By exploring this project, you'll learn:
 
 ---
 
-## 📝 Sample Queries
+## 📝 Sample Codes
 
 ### Find Top Revenue Generators
 ```sql
