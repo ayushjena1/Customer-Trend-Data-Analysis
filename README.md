@@ -77,24 +77,19 @@ Customer-Trend-Data-Analysis/
 
 ## 🔑 Key Insights
 
-### 👥 Gender-Based Revenue
-Male vs. Female customer spending patterns reveal segment-specific preferences
+**💰 Overall Scale:** The dataset captures $233,081 in observed revenue across 3,900 purchases, with an average ticket size of $59.76.
 
-### 💰 Subscription Value
-Subscribers show:
-- **Higher average spending** compared to non-subscribers
-- **Better retention** metrics
-- **Increased purchase frequency**
+**👕 Category Dominance:** Clothing drives the business at $104,264 (45% of revenue), followed by Accessories at $74,200 (32%).
 
-### 📦 Seasonal Trends
-- Product preferences vary by season (Winter, Spring, Summer, Fall)
-- Seasonal shipping type preferences
-- Weather-dependent category performance
+**👥 Demographic Mix:** Male customers contribute $157,890 across 2,652 purchases, while female customers contribute $75,191 across 1,248 purchases.
 
-### 🚚 Geographic Insights
-- Revenue distribution across 50 US states
-- Regional purchasing power variations
-- Location-based shipping preferences
+**🥇 Customer Loyalty:** An overwhelming 79.9% (3,116) of the customer base is categorized as "Loyal" (more than 10 previous purchases).
+
+**🏷️ Discount Exposure:** 43% of purchases include a discount, with particularly high discount incidences for items like Hats (50.0%) and Sneakers (49.7%).
+
+**🔄 Subscription Behavior:** Subscriptions do not translate to higher average spend per ticket; subscribers average $59.49 per purchase compared to $59.87 for non-subscribers.
+
+**🚚 Shipping Impact:** Upgrading to express shipping only adds a negligible $2.02 difference to the average purchase amount compared to standard shipping.
 
 ---
 
@@ -185,23 +180,25 @@ By exploring this project, you'll learn:
 
 ## 📝 Sample Codes
 
-### Find Top Revenue Generators
+### Highest Purchased Products
 ```sql
-SELECT gender, SUM(purchase_amount) AS total_revenue
+SELECT item_purchased, CONCAT( SUM( CASE 
+       WHEN discount_applied = 'Yes' THEN 1
+       ELSE 0 
+       END) * 100 / COUNT(*),'%') AS discount_percentage
 FROM customer
-GROUP BY gender
-ORDER BY total_revenue DESC;
+GROUP BY item_purchased
+ORDER BY discount_percentage DESC
+LIMIT 5;
 ```
 
-### Identify Loyal Customers
-```sql
-SELECT customer_id, COUNT(*) as purchase_count
-FROM customer
-WHERE previous_purchases > 10
-GROUP BY customer_id;
+### Analysis of Review Rating
+```python
+df['Review Rating'] = df.groupby('Category')['Review Rating'].transform(
+    lambda x: x.fillna(x.median()))
 ```
 
-### Analyze Discount Effectiveness
+### Top 3 Revenue Products
 ```sql
 WITH item_counts AS (
     SELECT category, item_purchased, COUNT(customer_id) AS total_orders,
